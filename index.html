@@ -9,73 +9,225 @@
 <style>
   :root {
     --bg: #f7f4ee;
+    --surface: #fcfaf5;
+    --surface-hover: #ffffff;
     --text: #1a1a1a;
-    --muted: #6e6a62;
-    --line: #dcd7cc;
+    --muted: #66625a;
+    --line: #e2ddd2;
+    --accent: #1a1a1a;
+    --badge-live-bg: #e7efe8;
+    --badge-live-text: #1f5c32;
+    --badge-soon-bg: #eee9de;
+    --badge-soon-text: #5f594e;
     --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
     --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --radius: 20px;
   }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { height: 100%; }
+
+  html { scroll-behavior: smooth; }
+
   body {
     font-family: var(--sans);
-    background: var(--bg);
+    background-color: var(--bg);
+    background-image: radial-gradient(circle at 85% 10%, rgba(214, 206, 190, 0.35), transparent 45%),
+                      radial-gradient(circle at 10% 85%, rgba(214, 206, 190, 0.25), transparent 40%);
     color: var(--text);
     -webkit-font-smoothing: antialiased;
-    display: flex; flex-direction: column;
-    padding: 0 28px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 clamp(20px, 5vw, 48px);
   }
-  header { padding: 28px 0; font-family: var(--serif); font-size: 1.5rem; letter-spacing: -.01em; }
+
+  .container {
+    max-width: 1040px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  header {
+    padding: 32px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    letter-spacing: -0.015em;
+    color: var(--text);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .brand-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--text);
+    display: inline-block;
+  }
+
+  .header-tag {
+    font-size: 0.85rem;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
 
   main {
-    flex: 1; display: flex; flex-direction: column; justify-content: center;
-    max-width: 900px; width: 100%; margin: 0 auto 6vh;
+    flex: 1;
+    padding: clamp(28px, 6vh, 64px) 0 clamp(48px, 8vh, 88px);
   }
+
+  .hero {
+    max-width: 780px;
+    animation: rise 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
   h1 {
-    font-family: var(--serif); font-weight: 400;
-    font-size: clamp(3rem, 10vw, 7rem);
-    line-height: 1; letter-spacing: -.035em;
-    animation: rise 1s ease both;
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.8rem, 8.5vw, 5.75rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
   }
-  p {
-    margin-top: 32px; font-size: 1.2rem; color: var(--muted); max-width: 440px;
-    animation: rise 1s .15s ease both;
+
+  .subtitle {
+    margin-top: 24px;
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 520px;
   }
-  .pill {
-    align-self: flex-start; margin-top: 44px;
-    padding: 14px 28px; border-radius: 999px;
-    background: var(--text); color: var(--bg);
-    font-size: .95rem; font-weight: 500;
-    animation: rise 1s .3s ease both;
+
+  .section-label {
+    margin-top: clamp(48px, 8vh, 76px);
+    margin-bottom: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    animation: rise 0.85s 0.12s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
-  @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 
-  footer {
-    border-top: 1px solid var(--line); padding: 24px 0 32px;
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
-    font-size: .85rem; color: var(--muted);
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 20px;
+    animation: rise 0.85s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
-  footer a { color: inherit; text-underline-offset: 3px; }
-  footer a:hover { color: var(--text); }
 
-  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
-</style>
-</head>
-<body>
-  <header>PhilCo</header>
+  .app-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 28px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+  }
 
-  <main>
-    <h1>Small apps,<br>built with care.</h1>
-    <p>An independent Android studio making simple, focused tools that do one thing well.</p>
-    
-    <span class="pill"><a href="https://play.google.com/store/apps/details?id=com.ferbersleeptimer.babytracker&pcampaignid=web_share">Ferber Timer, Google Play</a></span>
-    <span class="pill">Border Patrol Dominiation, Coming Soon to Google Play</span>
-  
-  </main>
+  .app-card:hover {
+    transform: translateY(-4px);
+    background: var(--surface-hover);
+    border-color: #cfc8ba;
+    box-shadow: 0 16px 36px -16px rgba(26, 26, 26, 0.12);
+  }
 
-  <footer>
-    <span>© 2026 PhilCo</span>
-    <a href="https://philipstng.github.io/Ferber-Timer-Privacy-Policy/">Privacy Policy</a>
-  </footer>
-</body>
-</html>
+  .card-top {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 5px 11px;
+    border-radius: 999px;
+    letter-spacing: 0.01em;
+  }
+
+  .badge-live {
+    background: var(--badge-live-bg);
+    color: var(--badge-live-text);
+  }
+
+  .badge-soon {
+    background: var(--badge-soon-bg);
+    color: var(--badge-soon-text);
+  }
+
+  .app-title {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.65rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .app-desc {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+
+  .card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 13px 18px;
+    border-radius: 12px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.15s ease, opacity 0.2s ease;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  .btn-primary:hover {
+    opacity: 0.88;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--line);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(26, 26, 26, 0.04);
+    border-color: #c5beb0;
+  }
+
+  .btn-arrow {
+    font-size: 1.05rem;
+    transition:

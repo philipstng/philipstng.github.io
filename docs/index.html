@@ -230,4 +230,165 @@
 
   .btn-arrow {
     font-size: 1.05rem;
-    transition:
+    transition: transform 0.2s ease;
+  }
+
+  .btn:hover .btn-arrow {
+    transform: translateX(3px);
+  }
+
+  .privacy-link {
+    align-self: flex-start;
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+  }
+
+  .privacy-link:hover {
+    color: var(--text);
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 28px 0 36px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  footer a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+  }
+
+  footer a:hover {
+    color: var(--text);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+  <header class="container">
+    <a href="#" class="brand">
+      <span class="brand-dot" aria-hidden="true"></span>
+      PhilCo
+    </a>
+    <span class="header-tag">Independent Android Studio</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Small apps,<br>built with care.</h1>
+      <p class="subtitle">An independent Android studio making simple, focused tools that do one thing well.</p>
+    </section>
+
+    <div class="section-label">Apps</div>
+
+    <section class="apps-grid" aria-label="PhilCo Applications">
+      <!-- 1. Ferber Timer -->
+      <article class="app-card">
+        <div class="card-top">
+          <div class="card-meta">
+            <span class="badge badge-live">Google Play</span>
+          </div>
+          <h2 class="app-title">Ferber Timer</h2>
+          <p class="app-desc">A calm, distraction-free sleep training interval timer designed for tired parents.</p>
+        </div>
+        <div class="card-actions">
+          <!-- Ferber Timer Store Link -->
+          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.ferbersleeptimer.babytracker&pcampaignid=web_share" target="_blank" rel="noopener noreferrer">
+            <span>View on Google Play</span>
+            <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+          <!-- Ferber Timer Privacy Policy Link -->
+          <a class="privacy-link" href="https://philipstng.github.io/Ferber-Timer-Privacy-Policy/" target="_blank" rel="noopener noreferrer">
+            Ferber Timer Privacy Policy
+          </a>
+        </div>
+      </article>
+
+      <!-- 2. Border Patrol Domination -->
+      <article class="app-card">
+        <div class="card-top">
+          <div class="card-meta">
+            <span class="badge badge-soon">Coming Soon</span>
+          </div>
+          <h2 class="app-title">Border Patrol Domination</h2>
+          <p class="app-desc">Fast-paced tactical border defense and territory control built for quick sessions.</p>
+        </div>
+        <div class="card-actions">
+          <!-- TODO: Replace # with Border Patrol Domination Google Play URL -->
+          <a class="btn btn-secondary" href="#" target="_blank" rel="noopener noreferrer">
+            <span>Google Play (Coming Soon)</span>
+            <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+          <!-- TODO: Replace # with Border Patrol Domination Privacy Policy URL -->
+          <a class="privacy-link" href="#" target="_blank" rel="noopener noreferrer">
+            Border Patrol Domination Privacy Policy
+          </a>
+        </div>
+      </article>
+
+      <!-- 3. Prompt Forge -->
+      <article class="app-card">
+        <div class="card-top">
+          <div class="card-meta">
+            <span class="badge badge-live">Google Play</span>
+          </div>
+          <h2 class="app-title">Prompt Forge</h2>
+          <p class="app-desc">An offline-first vault to organize, refine, and reuse your best AI prompts anywhere.</p>
+        </div>
+        <div class="card-actions">
+          <!-- TODO: Replace # with Prompt Forge Google Play URL -->
+          <a class="btn btn-primary" href="#" target="_blank" rel="noopener noreferrer">
+            <span>View on Google Play</span>
+            <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+          <!-- TODO: Replace # with Prompt Forge Privacy Policy URL -->
+          <a class="privacy-link" href="#" target="_blank" rel="noopener noreferrer">
+            Prompt Forge Privacy Policy
+          </a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="footer-inner">
+      <span>&copy; 2026 PhilCo</span>
+      <nav class="footer-links" aria-label="Privacy Policies">
+        <a href="https://philipstng.github.io/Ferber-Timer-Privacy-Policy/" target="_blank" rel="noopener noreferrer">Ferber Timer Privacy</a>
+        <!-- TODO: Replace # with Border Patrol Domination Privacy Policy URL -->
+        <a href="#" target="_blank" rel="noopener noreferrer">Border Patrol Domination Privacy</a>
+        <!-- TODO: Replace # with Prompt Forge Privacy Policy URL -->
+        <a href="#" target="_blank" rel="noopener noreferrer">Prompt Forge Privacy</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
